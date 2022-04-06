@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<conio.h>
+#include<time.h>
+#define SIZE 8
+
+int binSearch(int key, int arr[], int len) {
+	int low = 0, high = len - 1, mid;
+	while (low <= high) {
+		mid = (low + high) / 2;
+		if (arr[mid] == key) {
+			printf("Element found at index %d\n", mid);
+			return;
+		}
+		else if (arr[mid]>key) {
+			high = mid - 1;
+		}
+		else {
+			low = mid + 1;
+		}
+	}
+	if (low > high)
+		printf("Element not Found\n");
+}
+
+int main() {
+	time_t begin = time(NULL);
+	int arr[SIZE] = { 0 };
+	int searchElem = 0, i = 0;
+	printf("Enter the elements of the array in sorted order.\n");
+	for (i = 0; i < SIZE; i++) {
+		printf("array[%d] = ", i);
+		scanf("%d", &arr[i]);
+		printf("\n");
+	}
+
+	printf("Enter the element to be searched: ");
+	scanf
+	("%d", &searchElem);
+	binSearch(searchElem, arr, SIZE);
+	time_t end = time(NULL);
+
+	printf("The elapsed time is %d seconds", (end - begin));
+	_getch();
+	return 0;
+}
